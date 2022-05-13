@@ -9,13 +9,13 @@ import Foundation
 
 /// Protocol that extends Decodable with required properties for JSON:API objects
 public protocol JapxDecodable: Decodable {
-    var type: String { get }
-    var id: String { get }
+    var type: String? { get }
+    var id: String? { get }
 }
 
 /// Protocol that extends Encodable with required properties for JSON:API objects
 public protocol JapxEncodable: Encodable {
-    var type: String { get }
+    var type: String? { get }
 }
 
 public typealias JapxCodable = JapxDecodable & JapxEncodable
