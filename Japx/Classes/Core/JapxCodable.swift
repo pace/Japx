@@ -7,17 +7,8 @@
 
 import Foundation
 
-/// Protocol that extends Decodable with required properties for JSON:API objects
-public protocol JapxDecodable: Decodable {
-    var type: String? { get }
-    var id: String? { get }
-}
-
-/// Protocol that extends Encodable with required properties for JSON:API objects
-public protocol JapxEncodable: Encodable {
-    var type: String? { get }
-}
-
+public typealias JapxDecodable = Decodable
+public typealias JapxEncodable = Encodable
 public typealias JapxCodable = JapxDecodable & JapxEncodable
 
 /// Wrapper around JSONEncoder capable of encoding normal objects into JSON:API dictionaries
