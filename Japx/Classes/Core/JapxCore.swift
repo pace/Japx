@@ -45,8 +45,8 @@ private struct Consts {
 }
 
 private struct TypeIdPair {
-    let type: String
-    let id: String
+    let type: String?
+    let id: String?
 }
 
 /// A class for converting (parsing) JSON:API object to simple JSON object and vice versa.
@@ -676,10 +676,9 @@ private extension NSDictionary {
     }
     
     func extractTypeIdPair() throws -> TypeIdPair {
-        if let id = self.object(forKey: Consts.APIKeys.id) as? String, let type = self.object(forKey: Consts.APIKeys.type) as? String {
-            return TypeIdPair(type: type, id: id)
-        }
-        throw JapxError.notFoundTypeOrId(data: self)
+        let id = self.object(forKey: Consts.APIKeys.id) as? String
+        let type = self.object(forKey: Consts.APIKeys.type) as? String
+        return TypeIdPair(type: type, id: id)
     }
     
     func dictionary(for key: String, defaultDict: NSDictionary) -> NSDictionary {
